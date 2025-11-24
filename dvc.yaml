@@ -1,0 +1,18 @@
+stages:
+  process:
+    cmd: python src/process.py
+    deps:
+    - data/raw/telco_churn.csv
+    - src/process.py
+    outs:
+    - data/processed/processed.csv
+  train:
+    cmd: python src/train.py
+    deps:
+    - data/processed/processed.csv
+    - src/train.py
+    outs:
+    - model/model.pkl
+    metrics:
+    - metrics/metrics.json:
+        cache: false

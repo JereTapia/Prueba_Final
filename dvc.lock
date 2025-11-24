@@ -1,0 +1,38 @@
+schema: '2.0'
+stages:
+  process:
+    cmd: python src/process.py
+    deps:
+    - path: data/raw/telco_churn.csv
+      hash: md5
+      md5: 006527876bfe18c977d74eb4bc59443f
+      size: 873370
+    - path: src/process.py
+      hash: md5
+      md5: 1543ad04948c16926d41a6378209f77c
+      size: 2042
+    outs:
+    - path: data/processed/processed.csv
+      hash: md5
+      md5: b8884bc864a63421fdf0a6a4e1e719e8
+      size: 718126
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/processed.csv
+      hash: md5
+      md5: b8884bc864a63421fdf0a6a4e1e719e8
+      size: 718126
+    - path: src/train.py
+      hash: md5
+      md5: 348e60a4ec1a4f014954782a1ac78c24
+      size: 2951
+    outs:
+    - path: metrics/metrics.json
+      hash: md5
+      md5: 4203b084ab1a94e35147218ae4a2159b
+      size: 65
+    - path: model/model.pkl
+      hash: md5
+      md5: 50961ee2e9ba69accc0dd35500002aff
+      size: 1268

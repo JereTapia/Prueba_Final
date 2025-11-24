@@ -1,0 +1,1 @@
+__pycache__/* *.pyc dvc.lock .dvc/ # Artefactos a cargo de DVC data/processed/ models/ metrics/
